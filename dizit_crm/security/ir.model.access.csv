@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dizit_crm_person,dizit_crm.person,model_dizit_crm_person,base.group_user,1,1,1,1
+access_dizit_crm_police_station,dizit_crm.police_station,model_dizit_crm_police_station,base.group_user,1,1,1,1
+access_dizit_crm_district,dizit_crm.district,model_dizit_crm_district,base.group_user,1,1,1,1
+access_dizit_crm_division,dizit_crm.division,model_dizit_crm_division,base.group_user,1,1,1,1
+access_dizit_crm_insurance,dizit_crm.insurance,model_dizit_crm_insurance,base.group_user,1,1,1,1
+access_dizit_crm_ticketing,dizit_crm.ticketing,model_dizit_crm_ticketing,base.group_user,1,1,1,1
+access_dizit_crm_history_type,dizit_crm.history_type,model_dizit_crm_history_type,base.group_user,1,1,1,1
+access_dizit_crm_patient_history,dizit_crm.patient_history,model_dizit_crm_patient_history,base.group_user,1,1,1,1
+access_dizit_crm_patient_appointment,dizit_crm.appointment,model_dizit_crm_appointment,base.group_user,1,1,1,1
+access_dizit_crm_department,dizit_crm.department,model_dizit_crm_department,base.group_user,1,1,1,1
+access_dizit_crm_doctor,dizit_crm.doctor,model_dizit_crm_doctor,base.group_user,1,1,1,1
