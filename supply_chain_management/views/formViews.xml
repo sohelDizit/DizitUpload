@@ -1,0 +1,148 @@
+<odoo>
+  <data>	  
+	  <record model="ir.ui.view" id="tcb_supply_list">
+		  <field name="name">Supply list</field>
+		  <field name="model">scm.representation_history</field>
+		  <field name="arch" type="xml">
+			  <tree>
+				  <field name="name"/>
+				  <field name="Car"/>
+				  <field name="Source"/>
+				  <field name="Destination"/>
+				  <field name="status"/>
+				  <field name="create_uid"/>
+			  </tree>
+		  </field>
+	  </record>	  
+
+
+	  <record model="ir.ui.view" id="tcb_representative_destination">
+		  <field name="name">Destination History</field>
+		  <field name="model">scm.representative_destination</field>
+		  <field name="arch" type="xml">
+			  <tree>
+				  <field name="Source" width="200px"/>
+				  <field name="number_of_car" width="200px"/>
+			  </tree>
+		  </field>
+	  </record>	  
+
+
+	  <record id="supply_representation_form" model="ir.ui.view">
+		  <field name="name">supply_representation.form</field>
+		  <field name="model">scm.supply_representation</field>
+		  <field name="arch" type="xml">
+			  <form string="Account Entry">
+				  <sheet>
+					  <label for="name" string="Name:"/>
+					  <field name="name" widget="section_and_note_text"/>
+                      <br/>
+					  <label for="Source" string="Source:"/>
+					  <field name="Source" string="Source" widget="res_partner_many2one" style="width:100%"  />
+
+					  <br/>
+					  <label for="quantity" string="Quantity:"/>
+					  <field name="quantity" string="Quantity"  widget="section_and_note_text"/>
+					  <br/>
+					  <label for="transport_req" string="Transport Request:"/>
+					  <field name="transport_req" string="transport_req"/>
+					  <br/>
+					  <label for="Date" string="Date:"/>
+					  <field name="Date" string="Date"  widget="date" style="width:100%" />
+					  <br/>
+
+					    <group string="Destination History" groups="base.group_no_one">
+							<div name="creation_div">
+								<field name="rep_hist" domain="" string="destination History" />
+							</div>
+						</group>
+
+						<group string="History" groups="base.group_no_one" attrs="{'invisible':[('create_date','=',False)]}">
+							<label for="create_uid" string="Creation"/>
+							<div name="creation_div">
+								<field name="create_uid" readonly="1" class="oe_inline"/> on
+								<field name="create_date" readonly="1" class="oe_inline"/>
+							</div>
+						</group>
+						<group string="Tracing" groups="base.group_no_one" attrs="{'invisible':[('create_date','=',False)]}">
+							<div name="creation_div">
+								<field name="car_tracing" domain="" string="Tracing" />
+							</div>
+						</group>
+				  </sheet>
+			  </form>
+		  </field>
+	  </record>
+
+	  
+	  
+	  <record id="representation_hist_form" model="ir.ui.view">
+		  <field name="name">representation_hist.form</field>
+		  <field name="model">scm.representation_history</field>
+		  <field name="arch" type="xml">
+			  <form string="Account Entry">
+				  <header>
+					<field name="status" widget="statusbar" options="{'clickable': '1'}"/>
+				  </header>
+				  <sheet>
+					  <label for="name" string="Name:"/>
+					  <field name="name" widget="section_and_note_text"/>
+                      <br/>
+					  <label for="Car" string="Car:"/>
+					  <field name="Car" class="form-select" string="Car" style="width:100%"  />
+					  <br/> 
+
+					  <label for="Destination" string="Destination:"/>
+					  <field name="Destination" class="form-select" string="Destination" style="width:100%"  />
+					  <!-- <br/>
+					  <label for="Source" string="Source:"/>
+					  <field name="Source" string="Source" class="form-select" style="width:100%" /> -->
+					  <!-- <br/>
+					  <label for="status" string="status:"/>
+					  <field name="status" string="status" class="form-select" style="width:100%" /> -->
+
+					  <br/>
+					  <label for="parent_id" string="Parent:"/>
+					  <field name="parent_id" class="form-select" style="width:100%" />
+
+					  <br/>
+					  <label for="Date" string="Date:"/>
+					  <field name="Date" class="form-select" style="width:100%" />
+
+
+					  <div attrs="{'invisible': [('status', '!=', '5')]}">
+						<label for="reason" string="reason:"/>
+						<field name="reason" string="reason" style="width:100%"  widget="section_and_note_text"/>
+					  </div>
+
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<label for="challan_of_supply" string="Challan of Supply"/>
+								<field name="challan_of_supply" string="Challan of Supply"/>	
+							</div>
+							<div class="col">
+								<label for="challan_of_track" string="Challan of Track:"/>
+								<field name="challan_of_track" string="Challan of Track" />
+							</div>
+							<div class="col">
+								<label for="payment" string="Payment:"/>
+								<field name="payment" string="payment" />
+							</div>
+						</div>
+					</div>
+					<group string="History" groups="base.group_no_one" attrs="{'invisible':[('create_date','=',False)]}">
+						<label for="create_uid" string="Creation"/>
+						<div name="creation_div">
+							<field name="create_uid" readonly="1" class="oe_inline"/> on
+							<field name="create_date" readonly="1" class="oe_inline"/>
+						</div>
+					</group>
+				  </sheet>
+			  </form>
+		  </field>
+	  </record>
+
+
+  </data>
+</odoo>

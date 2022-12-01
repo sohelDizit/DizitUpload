@@ -1,0 +1,505 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="list">
+      <field name="name">Source list</field>
+      <field name="model">scm.scm</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" width="200px"/>
+		  <field name="capacity" width="200px"/>
+        </tree>
+      </field>
+    </record>
+	  
+    <record model="ir.ui.view" id="delivery_list">
+      <field name="name">Source list</field>
+      <field name="model">scm.supply_chain_delivery_point</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+		  <field name="capacity" />
+        </tree>
+      </field>
+    </record>
+
+	  <record model="ir.ui.view" id="transport_list">
+		  <field name="name">Transport list</field>
+		  <field name="model">scm.supply_chain_transport</field>
+		  <field name="arch" type="xml">
+			  <tree>
+				  <field name="name" width="200px"/>
+				  <field name="CarOwnerName" width="200px"/>
+			  </tree>
+		  </field>
+	  </record>
+
+
+
+	  <record model="ir.ui.view" id="supply_chain_upazila_list">
+		  <field name="name">Upazila list</field>
+		  <field name="model">scm.supply_chain_upazila</field>
+		  <field name="arch" type="xml">
+			  <tree>
+				  <field name="name" width="200px"/>
+				  <field name="district_id" width="200px"/>
+			  </tree>
+		  </field>
+	  </record>
+
+	  <record model="ir.ui.view" id="supply_chain_district_list">
+		  <field name="name">District list</field>
+		  <field name="model">scm.supply_chain_district</field>
+		  <field name="arch" type="xml">
+			  <tree>
+				  <field name="name" width="200px"/>
+			  </tree>
+		  </field>
+	  </record>
+
+	  <record model="ir.ui.view" id="supply_chain_product_list">
+		  <field name="name">Product list</field>
+		  <field name="model">scm.supply_chain_product</field>
+		  <field name="arch" type="xml">
+			  <tree>
+				  <field name="name" width="200px"/>
+
+			  </tree>
+		  </field>
+	  </record>
+
+
+
+	  <record model="ir.ui.view" id="supply_list">
+		  <field name="name">Supply list</field>
+		  <field name="model">scm.supply_delivery</field>
+		  <field name="arch" type="xml">
+			  <tree>
+				  <field name="name"/>
+				  <field name="Source"/>
+				  <field name="Destination"/>
+				  <field name="Car"/>
+				  <field name="Quantity"/>
+				  <field name="Beg"/>
+				  <field name="Date"/>			  
+			  </tree>
+		  </field>
+	  </record>
+
+
+	  <record model="ir.ui.view" id="representation_list">
+		  <field name="name">Representation list</field>
+		  <field name="model">scm.supply_representation</field>
+		  <field name="arch" type="xml">
+			  <tree>
+				  <field name="name"/>
+				  <field name="Date"/>
+				  <field name="quantity"/>
+				  <field name="transport_req"/>
+				  <!-- <field name="Destination"/> -->
+				  <field name="create_uid"/>
+			  </tree>
+		  </field>
+	  </record>
+
+	  <record model="ir.ui.view" id="representation_history_list">
+		  <field name="name">Representation History List</field>
+		  <field name="model">scm.tcb_supply</field>
+		  <field name="arch" type="xml">
+			  <tree>
+				  <field name="name" width="200px"/>
+				  <field name="Terget" width="200px"/>
+			  </tree>
+		  </field>
+	  </record>	  
+	  
+
+    <record model="ir.actions.act_window" id="action_window">
+      <field name="name">Supply Chain</field>
+      <field name="res_model">scm.scm</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="delivery_action_window">
+      <field name="name">Destination Chain</field>
+      <field name="res_model">scm.supply_chain_delivery_point</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+	<record model="ir.actions.act_window" id="transport_action_window">
+		<field name="name">Transport</field>
+		<field name="res_model">scm.supply_chain_transport</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="supply_delivery_action_window">
+		<field name="name">Supply</field>
+		<field name="res_model">scm.supply_delivery</field>
+		<field name="view_mode">calendar,tree,form</field>
+		<field name="context">{'search_default_today':1}</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="supply_action_window">
+		<field name="name">Supply</field>
+		<field name="res_model">scm.tcb_supply</field>
+		<field name="view_mode">tree,kanban,form</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="product_action_window">
+		<field name="name">Product</field>
+		<field name="res_model">scm.supply_chain_product</field>
+		<field name="view_mode">tree,kanban,form</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="upazila_action_window">
+		<field name="name">Upazila</field>
+		<field name="res_model">scm.supply_chain_upazila</field>
+		<field name="view_mode">tree,kanban,form</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="district_action_window">
+		<field name="name">District</field>
+		<field name="res_model">scm.supply_chain_district</field>
+		<field name="view_mode">tree,kanban,form</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="representation_action_window">
+		<field name="name">Representation</field>
+		<field name="res_model">scm.supply_representation</field>
+		<field name="view_mode">tree,kanban,form</field>
+	</record>
+	<record model="ir.actions.act_window" id="representation_hist_action_window">
+		<field name="name">Representation History</field>
+		<field name="res_model">scm.representation_history</field>
+		<field name="view_mode">tree,kanban,form</field>
+	</record>
+
+
+
+	  <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="action_server">
+      <field name="name">Supply Chain server</field>
+      <field name="model_id" ref="model_scm_scm"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <menuitem name="Supply Chain Management" id="menu_root" />
+
+    <menuitem name="Source" id="menu_1" parent="menu_root" action="action_window" sequence="5"/>
+	  
+    <menuitem name="Destination" id="menu_2" parent="menu_root"  sequence="4"
+			  action="delivery_action_window"/>
+
+	  <menuitem name="Transport" id="menu_3" parent="menu_root" sequence="3"
+			action="transport_action_window"/>
+
+	  <menuitem name="Supply" id="menu_4" parent="menu_root" sequence="2"
+			action="supply_delivery_action_window"/>
+
+	  <menuitem name="Supplies" id="menu_5" parent="menu_root" sequence="1"
+			action="supply_action_window"/>
+	  
+	  <menuitem name="Products" id="menu_6" parent="menu_root" sequence="6"
+			action="product_action_window"/>
+
+
+	  <menuitem name="Address" id="menu_12" parent="menu_root" sequence="9"/>
+
+
+	  <menuitem name="Upazila" id="menu_7" parent="menu_12" sequence="7"
+			action="upazila_action_window"/>
+
+	  <menuitem name="District" id="menu_8" parent="menu_12" sequence="8"
+			action="district_action_window"/>
+
+	  <menuitem name="Representation" id="menu_9" parent="menu_root" sequence="9"/>
+
+	  <menuitem name="Representation" id="menu_11" parent="menu_9" sequence="9"
+			action="representation_action_window"/>
+	  
+	  <menuitem name="Representation Hist" id="menu_10" parent="menu_9" sequence="10"
+			action="representation_hist_action_window"/>
+
+	<!--<menuitem name="Delivery" id="scm.menu_2_list" parent="scm.menu_1"
+        action="scm.delivery_action_window"/>-->
+	  
+    <!--<menuitem name="List" id="scm.menu_1_list" parent="scm.menu_1"
+              action="scm.action_window"/>
+	  
+    <menuitem name="Server to list" id="scm" parent="scm.menu_2"
+              action="scm.action_server"/>-->
+
+
+	  <record model="ir.ui.view" id="view_book">
+		  <field name="name">scm.tcb_supply_graph</field>
+		  <field name="model">scm.tcb_supply</field>
+		  <field name="type">graph</field>
+		  <field name="arch" type="xml">
+			  <graph string="Book" type="bar">
+				  <field name="Terget" group="True"/>
+				  <field name="name" operator="*"/>				  
+			  </graph>
+		  </field>
+	  </record>	  
+	  
+
+	  <record id="supply_form" model="ir.ui.view">
+		  <field name="name">Supply.form</field>
+		  <field name="model">scm.tcb_supply</field>
+		  <field name="arch" type="xml">
+			  <form string="Account Entry">
+				  <sheet>
+					  <!--<header>
+                    -->
+					  <!--<button name="action_post" string="Confirm" class="oe_highlight"/>-->
+					  <!--
+					</header>-->
+					  <div class="container">
+						  <div class="input">
+							  <label for="name" string="Name:"/>
+							  <field name="name" widget="section_and_note_text"/>
+							  <br/>
+							  <label for="Terget" string="Terget:"/>
+							  <field name="Terget" widget="section_and_note_text"/>
+						  </div>
+					  </div>
+
+					  <span id="received_ratio" style="display:none">
+						  <field name="shipped"/>
+						  <field name="notShipped"/>
+					  </span>
+
+					  <div class="gauge_container" onclick="showChat()">
+						  <field name="received_ratio" widget="gauge" options="{'max_field': 'Terget', 'label_field': 'definition_suffix', 'style': 'width:160px; height: 120px;'}" string="Delivered (%)"/>
+					  </div>
+
+					  <field name="Supplies" context="{'form_view_ref':'supply_chain_management.delivery_many2many_form'}" domain="[('parent_id','=',uid)]"/>
+					  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+					  <div id="chartContainer" style="height: 500px; width: 100%;"></div>
+
+					  <script>
+
+						  function showChat()
+						  {
+						  $('.o_content').scrollTop($('.o_content').height(),500);
+						  var chart = new CanvasJS.Chart("chartContainer",
+						  {
+						  animationEnabled: true,
+						  data: [{
+						  type: "pie",
+						  startAngle: 0,
+						  yValueFormatString: "##0.00\"\"",
+						  indexLabel: "{label} {y}",
+						  dataPoints: [
+						  {y: (parseInt($("span[name=shipped]").html().replace(/,/g, ''))), label: "shipped"},
+						  {y: (parseInt($("span[name=notShipped]").html().replace(/,/g, ''))), label: "Not Shipped"},
+						  ]
+						  }]
+						  });
+						  chart.render();
+						  }
+					  </script>
+
+					  <style>
+						  .gauge_container, .container {
+							  display: inline-block;
+							  float: left;
+							  width: 50%;
+						  }
+						  a.canvasjs-chart-credit {
+							display: none;
+						  }
+					  </style>
+				  </sheet>
+			  </form>
+		  </field>
+	  </record>
+
+
+	  <record id="supply_delivery_form" model="ir.ui.view">
+		  <field name="name">Supply_delivery.form</field>
+		  <field name="model">scm.supply_delivery</field>
+		  <field name="arch" type="xml">
+			  <form string="Account Entry">
+				  <sheet>
+					  <label for="name" string="Name"/>
+					  <field name="name" string="Name" widget="section_and_note_text"/>
+
+					  <label for="Source" string="Source"/>
+					  <field name="Source" string="Source" widget="res_partner_many2one" style="width:100%"  />
+					  <br/>
+					  <label for="parent_id" string="Parent"/>
+					  <field name="parent_id" string="parent_id"  style="width:100%" />
+
+
+					  <br/>
+					  <label for="Car" string="Car"/>
+					  <field name="Car" string="Car" widget="res_partner_many2one" style="width:100%"/>
+					  <br/>
+					  <label for="Quantity" string="Quantity"/>
+					  <field name="Quantity" string="Quantity"  widget="section_and_note_text"/>
+					  <br/>
+					  <label for="Beg" string="Beg"/>
+					  <field name="Beg" string="Beg"  widget="section_and_note_text"/>
+					  <br/>
+					  <label for="Date" string="Date"/>
+					  <field name="Date" string="Date"  widget="date" style="width:100%" />
+					  <br/>
+					  <label for="StartingTime" string="StartingTime"/>
+					  <field name="StartingTime" string="StartingTime" style="width:100%" />
+					  <br/>
+					  <label for="EndingTime" string="EndingTime"/>
+					  <field name="EndingTime" string="EndingTime" style="width:100%" />
+					  <br/>
+					  <label for="Description" string="Description" widget="html"/>
+					  <field name="Description" string="Description"/>
+				  </sheet>
+			  </form>
+		  </field>
+	  </record>
+
+	  
+	  <record id="delivery_many2many_form" model="ir.ui.view">
+		  <field name="name">Supply_delivery.form_delivery</field>
+		  <field name="model">scm.supply_delivery</field>
+          <field name="mode">primary</field>		  
+		  <field name="priority">17</field>			  
+		  <field name="arch" type="xml">
+			  <form>
+				  <label for="name" string="Name"/>
+				  <field name="name" string="Name" widget="section_and_note_text"/>
+				  
+				  <label for="Source" string="Source"/>
+				  <field name="Source" string="Source" widget="res_partner_many2one" style="width:100%"  />
+				  <br/>
+				  <label for="Destination" string="Destination"/>
+				  <field name="Destination" string="Destination" widget="res_partner_many2one" style="width:100%" />
+				  <br/>
+				  <label for="Car" string="Car"/>
+				  <field name="Car" string="Car" widget="res_partner_many2one" style="width:100%"/>
+				  <br/>
+				  <label for="Quantity" string="Quantity"/>
+				  <field name="Quantity" string="Quantity"  widget="section_and_note_text"/>
+				  <br/>
+				  <label for="Beg" string="Beg"/>
+				  <field name="Beg" string="Beg"  widget="section_and_note_text"/>
+				  <br/>
+				  <label for="Date" string="Date"/>
+				  <field name="Date" string="Date"  widget="date" style="width:100%" />
+				  <br/>
+				  <label for="StartingTime" string="StartingTime"/>
+				  <field name="StartingTime" string="StartingTime" style="width:100%" />
+				  <br/>
+				  <label for="EndingTime" string="EndingTime"/>
+				  <field name="EndingTime" string="EndingTime" style="width:100%" />
+				  <br/>
+				  <label for="Description" string="Description" widget="html"/>
+				  <field name="Description" string="Description"/>
+			  </form>
+		  </field>
+	  </record>		  
+		  
+		  
+			  
+	  <record id="tcb_supply_calender_view" model="ir.ui.view">
+		  <field name="name">tcb supply calender view</field>
+		  <field name="model">scm.supply_delivery</field>
+		  <field name="arch" type="xml">
+			  <calendar string="Service Request"                 
+						date_start="StartingTime"                 
+						date_stop="EndingTimeCompute"                 
+						event_open_popup="true"                 
+						mode="month"                 
+						color="color"                 
+						quick_add="False">
+				  <field name="name"/>
+			  </calendar>
+		  </field>
+	  </record>
+	  
+      <record id="supply_delivery_view_search" model="ir.ui.view">
+        <field name="name">scm.supply_delivery</field>
+        <field name="model">scm.supply_delivery</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+				<field name="Source"/>
+				<field name="Destination"/>				
+				<field name="Car"/>
+				<filter string="Today" name="today" 
+                        domain="[('Date', '=', context_today().strftime('%Y-%m-%d'))]"/>
+            </search>
+        </field>
+    </record>
+
+<!-- 
+	  <record id="supply_form" model="ir.ui.view">
+		  <field name="name">Supply.product_form</field>
+		  <field name="model">scm.supply_chain_product</field>
+		  <field name="arch" type="xml">
+			  <form string="Account Entry">
+				  <sheet>
+					  <div class="container">
+						  <div class="input">
+							  <field name='image' widget="image" class="oe_avatar" />
+							  <br/>
+							  <label for="name" string="Name:"/>
+							  <field name="name" widget="section_and_note_text"/>							
+						  </div>
+					  </div>
+					  <style>
+						  .gauge_container, .container {
+							  display: inline-block;
+							  float: none;
+							  width: 50%;
+						  }
+						  a.canvasjs-chart-credit {
+							display: none;
+						  }
+						  .o_form_view .oe_avatar {
+							float: none;
+						  }
+					  </style>
+				  </sheet>
+			  </form>
+		  </field>
+	  </record>	  
+	   -->
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  <!--<record id="tcb_supply_calender_view" model="ir.ui.view">
+		  <field name="name">tcb supply calender view</field>
+		  <field name="model">scm.tcb_supply</field>
+		  <field name="arch" type="xml">
+			  <calendar js_class="time_off_calendar" string="Time Off Request" form_view_id="%(hr_holidays.hr_leave_view_form_dashboard_new_time_off)d" event_open_popup="true" date_start="date_from" date_stop="date_to" mode="year" quick_add="False" show_unusual_days="True" color="color" hide_time="True">
+				  <field name="display_name"/>
+				  <field name="holiday_status_id" filters="1" invisible="1" color="color"/>
+				  <field name="state" invisible="1"/>
+				  <field name="is_hatched" invisible="1" />
+				  <field name="is_striked" invisible="1"/>
+			  </calendar>
+		  </field>
+	  </record>-->	  
+	  
+	
+	  
+  </data>
+</odoo>

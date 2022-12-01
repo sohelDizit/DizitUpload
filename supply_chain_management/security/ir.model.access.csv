@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_scm_scm,scm.scm,model_scm_scm,base.group_user,1,1,1,1
+access_scm_delivery_chain_management,scm.supply_chain_delivery_point,model_scm_supply_chain_delivery_point,base.group_user,1,1,1,1
+access_scm_transport,scm.supply_chain_transport,model_scm_supply_chain_transport,base.group_user,1,1,1,1
+access_scm_supply,scm.supply_delivery,model_scm_supply_delivery,base.group_user,1,1,1,1
+access_scm_supplies,scm.tcb_supply,model_scm_tcb_supply,base.group_user,1,1,1,1
+access_scm_product,scm.supply_chain_product,model_scm_supply_chain_product,base.group_user,1,1,1,1
+access_supply_chain_upazila,scm.supply_chain_upazila,model_scm_supply_chain_upazila,base.group_user,1,1,1,1
+access_supply_chain_district,scm.supply_chain_district,model_scm_supply_chain_district,base.group_user,1,1,1,1
+access_supply_representation,scm.supply_representation,model_scm_supply_representation,base.group_user,1,1,1,1
+access_representation_history,scm.representation_history,model_scm_representation_history,base.group_user,1,1,1,1
+access_representative_destination,scm.representative_destination,model_scm_representative_destination,base.group_user,1,1,1,1
+
+
+

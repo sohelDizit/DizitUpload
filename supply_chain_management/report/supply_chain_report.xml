@@ -1,0 +1,82 @@
+<odoo>
+	<record id="action_supply_chain_delivery_report" model="ir.actions.report">		
+		<field name="name">Supply Chain Delivery</field>
+		<field name="model">scm.tcb_supply</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">supply_chain_management.supply_chain_delivery_report</field>
+		<!--<field name="report_file">scm.supply_chain_delivery_report</field>-->
+		<field name="print_report_name">'Supply Chain - %s' % (object.name)</field>
+		<field name="binding_model_id" ref="model_scm_tcb_supply"/>
+	    <field name="binding_type">report</field>
+	</record>
+
+	<template id="supply_chain_delivery_report">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="web.external_layout">
+					<div class="page">						
+						<h2>Name: <span t-esc="o.name"/></h2>	
+						<h5>Terget: <span t-esc="o.Terget"/></h5>	
+						<table>
+						  <tr>
+							<th>Name</th>
+							<th>Source</th>
+							<th>Destination</th>
+						  	<th>Car</th>
+							<th>QTY</th>
+							<th>Beg</th>
+						    <th>Date</th>
+						    <th>Starting</th>
+						    <th>Ending</th>
+						  </tr>
+							<t t-foreach="o.Supplies" t-as="sup">
+							  <tr>
+								<td><span t-esc="sup.name"/></td>
+								<td><span t-esc="sup.Source.name"/></td>
+							    <td><span t-esc="sup.Destination.name"/></td>
+							    <td><span t-esc="sup.Car.name"/></td>
+							    <td><span t-esc="sup.Quantity"/></td>
+							    <td><span t-esc="sup.Beg"/></td>
+						        <td><span t-esc="sup.Date.strftime('%d %B  %Y')"/></td>
+								<td>									
+									<t t-if="sup.StartingTime">
+										<span t-esc="sup.StartingTime.strftime('%d %B  %Y %I:%M %p')"/>
+									</t>								  
+								</td>
+							    <td>									
+									<t t-if="sup.EndingTime">
+										<span t-esc="sup.EndingTime.strftime('%d %B  %Y %I:%M %p')"/>
+									</t>								  
+							  </td>
+							  </tr>
+							</t>													
+						</table>
+
+						<style>
+							table {
+								font-family: arial, sans-serif;
+								border-collapse: collapse;
+								width: 100%;
+								font-size: 12px;
+								/* font-weight: bolder; */
+								line-height: 30px;
+								text-align: center;
+							}
+
+							td, th {
+							  border: 1px solid #dddddd;
+							  text-align: left;
+							  padding: 8px;
+							}
+
+							tr:nth-child(even) {
+							  background-color: #dddddd;
+							}
+						</style>
+					</div>
+				</t>
+			</t>
+		</t>
+	</template>
+
+</odoo>
