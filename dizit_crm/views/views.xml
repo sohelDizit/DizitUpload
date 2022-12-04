@@ -403,7 +403,7 @@
 					  }
 					.fullwidth {
 						width: 100%;
-						height: 30px;
+						min-height: 30px;
 						margin: 5px 0px 12px 0px !important;
 					}
 					.elements.name {
@@ -462,7 +462,7 @@
 					  }
 					.fullwidth {
 						width: 100%;
-						height: 30px;
+						min-height: 30px;
 						margin: 5px 0px 12px 0px !important;
 					}
 					.elements.name {
@@ -529,7 +529,7 @@
 					  }
 					.fullwidth {
 						width: 100%;
-						height: 30px;
+						min-height: 30px;
 						margin: 5px 0px 12px 0px !important;
 					}
 					.elements.name {
@@ -596,7 +596,7 @@
 					  }
 					.fullwidth {
 						width: 100%;
-						height: 30px;
+						min-height: 30px;
 						margin: 5px 0px 12px 0px !important;
 					}
 					.elements.name {
@@ -615,6 +615,66 @@
 		  </field>
 	  </record>	 
 
+
+
+
+	  <record id="doctor_form" model="ir.ui.view">
+		  <field name="name">dizit_crm.doctor</field>
+		  <field name="model">dizit_crm.doctor</field>
+		  <field name="arch" type="xml">
+			  <form string="Doctor Entry">
+				  <sheet>
+						<div class="elements name">
+							<label for="image" />
+							<br/>
+							<field name="image"  widget="image" class="fullwidth"/>
+						 </div>
+					  	<div class="elements name">
+							<label for="name"  />
+							<br/>
+							<field name="name" string="Subject" class="fullwidth"/>
+						 </div>
+
+					  	<div class="elements name">
+							<label for="department_ids" />
+							<br/>
+							<field name="department_ids"  class="fullwidth"/>
+						 </div>
+
+					  	<div class="elements name">
+							<label for="description"  />
+							<br/>
+							<field name="description" string="description" class="fullwidth"/>
+						 </div>			
+
+				  </sheet>
+				  <style>
+
+					  .elements {
+						  display: inline-block;
+						  width: 100%;
+						  margin-right: 5%;
+					  }
+					.fullwidth {
+						width: 100%;
+						min-height: 30px;
+						margin: 5px 0px 12px 0px !important;
+					}
+					.elements.name {
+						display: inline-block;
+						width: 100%;
+						margin-right: 5%;
+						float:left;
+					}
+					
+					.img-fluid {
+						max-width: 100%;
+						height: 100px;
+					}
+				  </style>			  				  
+			  </form>
+		  </field>
+	  </record>	 
 
 
 
