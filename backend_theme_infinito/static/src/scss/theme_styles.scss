@@ -29,7 +29,7 @@ body {
         }
     }
     .dropdown-toggle {
-        color: var(--text-color-1) !important;
+        // color: var(--text-color-1) !important;
         font-size: 15px !important;
     }
     .o_nav_entry {
@@ -38,16 +38,34 @@ body {
     }
     .o_menu_sections {
         .o_nav_entry {
-            color: var(--text-color-1);
+            // color: var(--text-color-1);
             font-size: 15px;
         }
     }
 }
+
+.o_navbar_apps_menu .dropdown-menu{
+    background: #598F44;
+    background: -webkit-linear-gradient(top, #598F44, #92C340);
+    background: -moz-linear-gradient(top, #598F44, #92C340);
+    background: linear-gradient(to bottom, #598F44, #92C340);
+}
+
+
 .o_main_navbar,
 .o_menu_systray,
 .o_web_client>header {
     margin-top: 0px !important;
 }
+
+header {
+    background: #598F44;
+    background: -webkit-linear-gradient(top, #598F44, #92C340);
+    background: -moz-linear-gradient(top, #598F44, #92C340);
+    background: linear-gradient(to bottom, #598F44, #92C340);
+}
+
+
 .o_MessagingMenu_counter,
 .o_notification_counter {
     background: var(--button-bg) !important;
