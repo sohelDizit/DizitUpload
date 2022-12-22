@@ -10,3 +10,4 @@ access_dizit_crm_patient_history,dizit_crm.patient_history,model_dizit_crm_patie
 access_dizit_crm_patient_appointment,dizit_crm.appointment,model_dizit_crm_appointment,base.group_user,1,1,1,1
 access_dizit_crm_department,dizit_crm.department,model_dizit_crm_department,base.group_user,1,1,1,1
 access_dizit_crm_doctor,dizit_crm.doctor,model_dizit_crm_doctor,base.group_user,1,1,1,1
+access_dizit_crm_customercategory,dizit_crm.customercategory,model_dizit_crm_customercategory,base.group_user,1,1,1,1

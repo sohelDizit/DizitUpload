@@ -32,6 +32,7 @@ class Person(models.Model):
     police_station = fields.Many2one("dizit_crm.police_station", string="Police Station")
     district = fields.Many2one("dizit_crm.district", string="District")
     division = fields.Many2one("dizit_crm.division", string="Division")
+    category = fields.Many2one("dizit_crm.customercategory", string="Customer Category")
 
     contacts= fields.Char(required=True)
     emmergency_contacts=fields.Char()
@@ -182,3 +183,10 @@ class Appointment(models.Model):
             operator = 'ilike'
         ids =  self.env['dizit_crm.appointment'].search([('parent_id.contacts', operator, value)])
         return [('id', 'in' , ids.ids)]
+
+class CustomerCategory(models.Model):
+    _name = 'dizit_crm.customercategory'
+    _description = 'dizit_crm.customercategory'
+    name=fields.Char(required=True)
+    description = fields.Text()
+

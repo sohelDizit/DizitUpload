@@ -159,6 +159,14 @@
       <field name="view_mode">tree,form</field>
     </record>		  
 
+    <record model="ir.actions.act_window" id="dizit_crm.customercategory_action_window">
+      <field name="name">Customer Category</field>
+      <field name="res_model">dizit_crm.customercategory</field>
+      <field name="view_mode">tree,form</field>
+    </record>	
+
+
+
     <record model="ir.actions.act_window" id="dizit_crm.insurance_action_window">
       <field name="name">Insurance</field>
       <field name="res_model">dizit_crm.insurance</field>
@@ -193,7 +201,7 @@
 
 
     <menuitem name="MyCare CRM" id="dizit_crm.menu_root"/>
-	<menuitem name="Address" id="dizit_crm.address_action" parent="dizit_crm.menu_root"/>	
+	<menuitem name="Other Info" id="dizit_crm.address_action" parent="dizit_crm.menu_root"/>	
 
 	<menuitem name="Customer" id="dizit_crm.person_menu" parent="dizit_crm.menu_root"
 			action="dizit_crm.person_action_window"/>
@@ -204,6 +212,10 @@
 	<menuitem name="Division" id="dizit_crm.division" parent="dizit_crm.address_action"
 			action="dizit_crm.division_action_window"/>		  
 	
+	<menuitem name="Category" id="dizit_crm.customercategory" parent="dizit_crm.address_action"
+			action="dizit_crm.customercategory_action_window"/>	
+
+
 	<menuitem name="District" id="dizit_crm.district" parent="dizit_crm.address_action"
 		action="dizit_crm.district_action_window"/>		  
 	  		  
@@ -364,6 +376,12 @@
 						  </page>
 
 						  <page name="access_rights2" string="Implus info">
+								<div class="elements">
+								  <label for="category" string="Category" />
+								  <br/>
+								  <field name="category" string="category" class="fullwidth"/>
+							  </div>
+							  
 							  <div class="elements">
 								  <label for="status" string="status" />
 								  <br/>
@@ -374,6 +392,7 @@
 								  <br/>
 								  <field name="cid" string="cid" class="fullwidth"  attrs="{'invisible': [('status', '!=', '3')],'required': [('status', '=', '3')]}"/>
 							  </div>
+							  
 						  </page>						   
 					  
 						  <page name="access_rights3" string="Ticketing">
